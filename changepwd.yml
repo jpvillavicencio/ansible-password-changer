@@ -9,4 +9,4 @@
     user:
       name: "{{ user.username }}"
       update_password: always
-      password: "{{ user.password }}"
+      password: "{{ user.password | password_hash('sha512') }}"

@@ -33,7 +33,7 @@ $ sudo apt-get install ansible
     user:
       name: "{{ user.username }}"
       update_password: always
-      password: "{{ user.password }}"
+      password: "{{ user.password | password_hash('sha512') }}"
 ```
 
 ## 4. create config file (config.yml)
@@ -44,7 +44,6 @@ user:
   password: <password>
 ```
 
-Note: Hashed password must be used. Generate password by using `openssl passwd -1 <password>`.
 
 ## 5. Run ansible-playbook
 ```
